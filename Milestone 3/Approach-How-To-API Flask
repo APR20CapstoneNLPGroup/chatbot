@@ -5,20 +5,25 @@ Step 1: Design a clickable UI which can automate tasks performed under milestone
 
 Overview:
 
+a) Create an API for the model, using Flask which is a Python micro framework for building web applications.
+b) This API will allow us to utilize the predictive capabilities through HTTP requests
+
 
 Step 2: Design a clickable UI which can automate tasks performed under milestone 2 [ 5 points ]
 
 Overview:
 
 
+a) Create an API for the model, using Flask which is a Python micro framework for building web applications.
+b) This API will allow us to utilize the predictive capabilities through HTTP requests
+
 Step 3: Design a clickable UI based chatbot interface [ 5 points ]
 
 Overview:
 
 
-1) Create an API for the model, using Flask which is a Python micro framework for building web applications.
-2) This API will allow us to utilize the predictive capabilities through HTTP requests
-
+a) Create an API for the model, using Flask which is a Python micro framework for building web applications.
+b) This API will allow us to utilize the predictive capabilities through HTTP requests
 
 
 Folder Structure:
