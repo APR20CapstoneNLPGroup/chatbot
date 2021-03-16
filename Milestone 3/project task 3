@@ -1,15 +1,3 @@
-#Clickable UI based chatbot interface
-import numpy as np
-from flask import Flask, request, jsonify, render_template
-import pickle
-
-app = Flask(__name__)
-
-model = pickle.load(open('model.pkl', 'rb'))
-
-@app.route('/')
-def home():
-    return render_template('/index.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
+‣ Step 1: Design a clickable UI which can automate tasks performed under milestone 1 [ 5 points ]
+‣ Step 2: Design a clickable UI which can automate tasks performed under milestone 2 [ 5 points ]
+‣ Step 3: Design a clickable UI based chatbot interface [ 5 points ]
