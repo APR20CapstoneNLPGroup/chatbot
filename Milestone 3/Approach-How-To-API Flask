@@ -1,0 +1,13 @@
+How are we deploying ML Model on a Web Interface using Flask
+
+Overview:
+
+1) Create an API for the model, using Flask which is a Python micro framework for building web applications.
+2) This API will allow us to utilize the predictive capabilities through HTTP requests
+
+Folder Structure:
+
+app.py
+requests.py
+templates/
+	index.html
