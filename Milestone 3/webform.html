@@ -1,120 +1,144 @@
 <!DOCTYPE html>
 
 <body>
+
 <div class="header">
   <h1>Industrial-safety-and-health-analytics-database </h1>
 </div>
 
-<div id="search-info">
-  <h2>Accident Severity Level predictor</h2>
-</div>
+	<div id="search-info">
+	  <h2>Accident Severity Level predictor</h2>
+	</div>
+			<div class="split left">
+				<div class="centered">
+				
+				<div class="search-info">
+					<h1>Industrial-safety-and-health-analytics-database </h1>
+				</div>
+				
+						<div id="search-info">
+						  <h3>A) Milestone-1-Tasks</h3>
+						</div>
 
-<div id="search-info">
-  <h3>A) Milestone-1-Tasks</h3>
-</div>
+							<div id="search-info">
+							  <h4>1)Upload the dataset</h4>
+							</div>
 
-<div id="search-info">
-  <h4>1)Upload the dataset</h4>
-</div>
+								<div class="form-style-8">
+								  <form id="upload_form" action="/upload" method="POST" enctype=multipart/form-data>
+									  <input type=file name = file style="margin-bottom: 20px">
+								  </form>
+								</div>
 
-<div class="form-style-8">
-  <form id="upload_form" action="/upload" method="POST" enctype=multipart/form-data>
-      <input type=file name = file style="margin-bottom: 20px">
-  </form>
-</div>
+								<div class="form-style-8">
+								  <form id="upload_form" action="/upload" method="POST" enctype=multipart/form-data>
+									  <input type=submit value="Upload" id="UploadButton">
+								  </form>
+								</div>
 
-<div class="form-style-8">
-  <form id="upload_form" action="/upload" method="POST" enctype=multipart/form-data>
-      <input type=submit value="Upload" id="UploadButton">
-  </form>
-</div>
+							<div id="search-info">
+							  <h4>2) Import dataset into DataFrame</h4>
+							</div>
 
-<div id="search-info">
-  <h4>2) Import dataset into DataFrame</h4>
-</div>
+								<div class="form-style-8">
+								  <form id="load_form" action="/load" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="Load" id="LoadButton" />
+								  </form>
+								</div>
 
-<div class="form-style-8">
-  <form id="load_form" action="/load" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="Load" id="LoadButton" />
-  </form>
-</div>
+							<div id="search-info">
+							  <h4>3) Data Cleansing & Pre-Process</h4>
+							</div>
 
-<div id="search-info">
-  <h4>3) Data Cleansing & Pre-Process</h4>
-</div>
+								<div class="form-style-8">
+								  <form id="Clean" action="/Clean" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="Clean" id="CleanButton" />
+								  </form>
+								</div>
 
-<div class="form-style-8">
-  <form id="Clean" action="/Clean" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="Clean" id="CleanButton" />
-  </form>
-</div>
+							<div id="search-info">
+							  <h4>4) Data preparation to be used for AIML model learning</h4>
+							</div>
 
-<div id="search-info">
-  <h4>4) Data preparation to be used for AIML model learning</h4>
-</div>
+								<div class="form-style-8">
+								  <form id="prep" action="/prep" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="Prep" id="PrepButton" />
+								  </form>
+								</div>
+			  </div>
+			</div>
+			<div class="split right">
+				<div class="centered">
+						
+						<div id="search-info">
+							<h3>B) Milestone-2-Tasks</h3>
+						</div>
 
-<div class="form-style-8">
-  <form id="prep" action="/prep" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="Prep" id="PrepButton" />
-  </form>
-</div>
+							<div id="search-info">
+							  <h4>1) NLP pre processing</h4>
+							</div>
 
-<div id="search-info">
-  <h3>B) Milestone-2-Tasks</h3>
-</div>
-
-<div id="search-info">
-  <h4>1) NLP pre processing</h4>
-</div>
-
-<div class="form-style-8">
-  <form id="train-test" action="/nlp_preprocess" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="NLP_Preprocess" id="NLP_Preprocess" />
-  </form>
-</div>
+								<div class="form-style-8">
+								  <form id="train-test" action="/nlp_preprocess" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="NLP_Preprocess" id="NLP_Preprocess" />
+								  </form>
+								</div>
 
 
-<div id="search-info">
-  <h4>2) Design, train and test machine learning classifiers</h4>
-</div>
+							<div id="search-info">
+							  <h4>2) Design, train and test machine learning classifiers</h4>
+							</div>
 
-<div class="form-style-8">
-  <form id="ML_clf" action="/ML_clf" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="ML_clf" id="ML_clfButton" />
-  </form>
-</div>
+								<div class="form-style-8">
+								  <form id="ML_clf" action="/ML_clf" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="ML_clf" id="ML_clfButton" />
+								  </form>
+								</div>
 
-<div id="search-info">
-  <h4>3) Design, train and test Neural networks classifiers</h4>
-</div>
+							<div id="search-info">
+							  <h4>3) Design, train and test Neural networks classifiers</h4>
+							</div>
 
-<div class="form-style-8">
-  <form id="NN_clf" action="/NN_clf" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="NN_clf" id="NN_clfButton" />
-  </form>
-</div>
+								<div class="form-style-8">
+								  <form id="NN_clf" action="/NN_clf" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="NN_clf" id="NN_clfButton" />
+								  </form>
+								</div>
 
-<div id="search-info">
-  <h4>4) Design, train and test RNN or LSTM classifiers</h4>
-</div>
-
-<div class="form-style-8">
-  <form id="LSTM_clf" action="/LSTM_clf" method="POST" enctype=multipart/form-data>
-      <input type="submit" value="LSTM_clf" id="LSTM_clfButton" />
-  </form>
-</div>
-
-<div id="search-info">
-  <h4>5) Prediction</h4>
-</div>
-
-<div class="form-style-8">
-  <form id="search_form" action="/" method="POST">
-    <input type="text" name="text_entered" placeholder="Enter text received" />
-    <input type="submit" value="Get Accident Level prediction!" id="SubmitButton" />
-  </form>
-</div>
+							<div id="search-info">
+							  <h4>4) Design, train and test RNN or LSTM classifiers</h4>
+							</div>
+								<div class="form-style-8">
+								  <form id="LSTM_clf" action="/LSTM_clf" method="POST" enctype=multipart/form-data>
+									  <input type="submit" value="LSTM_clf" id="LSTM_clfButton" />
+								  </form>
+								</div>
+							<div id="search-info">
+							  <h4>5) Prediction</h4>
+							</div>
+								<div class="form-style-8">
+								  <form id="search_form" action="/" method="POST">
+									<input type="text" name="text_entered" placeholder="Enter text received" />
+									<input type="submit" value="Get Accident Level prediction!" id="PredictButton" />
+								  </form>
+							</div>								
+								
+								
+			  </div>
+			</div>
+			
+	<div id="search-info">
+	  <h4>5) Prediction</h4>
+	</div>
+		<div class="form-style-8">
+		  <form id="search_form" action="/" method="POST">
+			<input type="text" name="text_entered" placeholder="Enter text received" />
+			<input type="submit" value="Get Accident Level prediction!" id="PredictButton" />
+		  </form>
+		</div>
 </body>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -132,9 +156,43 @@ window.onload = function() {
 </script>
 
 <style>
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: white;
+}
+
+.right {
+  right: 0;
+  background-color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
 .header {
   font-family: 'Proxima Novas', sans-serif;
-  padding: 10px;
+  padding: 1px;
   text-align: center;
   background: black;
   color: white;
@@ -146,11 +204,10 @@ h1{
   font-weight: bold;
   font-size: 2em;
   font-family: 'Raleway', sans-serif;
-  margin: 0 auto;
-  margin-top: 10px;
-  width: 1000px;
-  color: white;
-  text-align: center;
+  margin: 0;
+  margin-top: 1px;
+  color: black;
+  text-align: left;
   
 }
 
@@ -163,6 +220,7 @@ h2{
   width: 1000px;
   color: black;
   text-align: center;
+
 }
 
 h3 {
@@ -172,6 +230,7 @@ h3 {
   font-weight: bold;
   color: black;
   font-family: 'Raleway', sans-serif;
+  background-color: lightblue
 }
 
 h4 {
@@ -184,6 +243,16 @@ h4 {
 }
 
 #search-info {
+  text-align: center;
+  font-family: 'Proxima Nova', sans-serif;
+  color: #0077cc;
+  font-size: 24px;
+  font-weight: 100;
+  padding: 20px;
+  margin: -30px -30px -10px -30px;
+}
+
+predict {
   text-align: center;
   font-family: 'Proxima Nova', sans-serif;
   color: #0077cc;
