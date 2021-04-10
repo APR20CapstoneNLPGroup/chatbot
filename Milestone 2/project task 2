@@ -1,1 +1,10 @@
 
+Milestone 2: [ Duration: 2 weeks, Score: 20 points]
+‣ Input: Output of milestone 1 ‣ Process: [ 15 points ]
+‣ Step 1: NLP pre processing
+‣ Step 2: Design, train and test machine learning classifiers
+‣ Step 3: Design, train and test Neural networks classifiers
+‣ Step 4: Design, train and test RNN or LSTM classifiers
+‣ Step 5: Choose the best performing model classifier and pickle it.
+‣ Output: Pickled model to be used for future prediction [ 2.5 points ]
+‣ Submission: Interim report 2 [ 2.5 points ]
