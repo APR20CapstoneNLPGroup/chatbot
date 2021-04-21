@@ -10,6 +10,7 @@ from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
 import os
 import seaborn as sns
+import keras
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
@@ -56,7 +57,7 @@ from keras.initializers import Constant
 from sklearn.metrics import classification_report, confusion_matrix
 import pickle
 
-
+MAX_SEQUENCE_LENGTH = 80
 
 ##Helper functions::
 import re
@@ -203,7 +204,7 @@ def preprocess_data(data):
 	print('\n Longest line at idx: {}'.format(max_idx))
 	print('\n Length of longest line: {}'.format(len(df['Description'][max_idx])))
 	print('\n Longest line:: {}'.format(df['Description'][max_idx]))
-
+	#MAX_SEQUENCE_LENGTH = len(df['Description'][max_idx])
 	return df
 
 
@@ -233,13 +234,13 @@ def create_save_w2v_embedding(embedding_file, df):
 	print('Vocabulary size: %d' % len(words))
 
 	# save model in ASCII (word2vec) format
-	filename = file_name
+	filename = embedding_file
 	print('\n: Saving model file: {}'.format(filename))
 	model.wv.save_word2vec_format(filename, binary=False)
-	return desc_list
+	return desc_lines
 
 
-def train_save_w2_model(embedding_file, desc_list, w2v_model_file):
+def train_save_w2_model(df, embedding_file, desc_lines, w2v_model_dir):
 	embeddings_index = {}
 	f = open(os.path.join('', 'embedding_word2vec.txt'),  encoding = "utf-8")
 	for line in f:
@@ -315,10 +316,11 @@ def train_save_w2_model(embedding_file, desc_list, w2v_model_file):
 	model.add(SpatialDropout1D(0.2))
 	model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
 	model.add(Dense(5, activation='softmax'))
+	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	print('\n Model Summary'.format(model.summary()))
 
 	print('\n\n ... Fitting the model...\n')
-	h = model.fit(X_train, y_train, batch_size=128, epochs=5, validation_data=(x_val, y_val), verbose=2, shuffle=True)
+	h = model.fit(X_train, y_train, batch_size=128, epochs=10, validation_data=(x_val, y_val), verbose=2, shuffle=True)
 
 
 	#Evaluate the model:
@@ -374,31 +376,39 @@ def train_save_w2_model(embedding_file, desc_list, w2v_model_file):
 	plt.show()
 
 	print('\n Saving w2v mode::')
-	pickle.dump(model, open(w2v_model_file, 'wb'))
+	#pickle.dump(model, open(w2v_model_file, 'wb')) 
+	model.save('w2v_model_dir')
 
 
 #Predict:
-	def predict(input_str, w2v_model_file):
-		input_str = input_str.split(' ')
-		input_str = pd.DataFrame(input_str).apply(clean_text)
+def predict(input_str, w2v_model_dir, w2v_embedding_file):
+	loaded_model = keras.models.load_model(w2v_model_dir)
+	ip = clean_text(input_str)
+	embeddings_index = {}
+	f = open(os.path.join('', w2v_embedding_file),  encoding = "utf-8")
+	for line in f:
+	    values = line.split()
+	    word = values[0]
+	    coefs = np.asarray(values[1:], dtype='float32')
+	    embeddings_index[word] = coefs
+	f.close()
 
-		#load the model:
-		loaded_model = pickle.load(open(w2v_embedding_file, 'rb'))
-		prediction = loaded_model.predict(input_str)
-		print('\n Predicted risk category: {}'.format(prediction))
-		return prediction
+	tokenizer_obj = Tokenizer()
+	tokenizer_obj.fit_on_texts(ip)
+	sequences = tokenizer_obj.texts_to_sequences(ip)
+	# pad sequences
+	word_index = tokenizer_obj.word_index
+	print('\n Found %s unique tokens.' % len(word_index))
 
+	desc_pad = pad_sequences(sequences, maxlen=30)
 
-
-### Sequence of callsf from main API::
-# data = pd.read_csv('file.csv')
-# df = preprocess_data(data)
-# w2v_embedding_file = 'embedding_word2vec.txt'
-# w2v_model_file = 'w2v_model.sav'
-# desc_list = create_save_w2v_embedding(w2v_embedding_file, df, w2v_model_file)
-# train_save_w2_model(w2v_model_file, desc_list, w2v_model_file)
-# input_str = 'Hi There ...' 
-# predict(input_str, w2v_model_file)
+	ip_padded = desc_pad
+	y_pred = loaded_model.predict_proba(ip_padded, batch_size=32, verbose=1)
+	y_pred_bool = np.argmax(y_pred, axis=0)
+	#print(np.argmax(y_pred_bool))
+	prediction = (np.argmax(y_pred_bool))
+	print('\nPrediction class: {}'.format(prediction))
+	return prediction
 
 
 
