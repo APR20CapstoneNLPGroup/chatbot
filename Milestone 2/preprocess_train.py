@@ -409,6 +409,3 @@ def predict(input_str, w2v_model_dir, w2v_embedding_file):
 	prediction = (np.argmax(y_pred_bool))
 	print('\nPrediction class: {}'.format(prediction))
 	return prediction
-
-
-
