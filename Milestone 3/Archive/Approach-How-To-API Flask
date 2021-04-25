@@ -1,0 +1,38 @@
+How are we deploying ML Model on a Web Interface using Flask 
+
+
+Step 1: Design a clickable UI which can automate tasks performed under milestone 1 [ 5 points ]
+
+Step 2: Design a clickable UI which can automate tasks performed under milestone 2 [ 5 points ]
+
+Step 3: Design a clickable UI based chatbot interface [ 5 points ]
+
+Overview:
+
+
+Pickled model from milestone 2 >>>> Process >>>> Clickable UI based chatbot interface which accepts text as input and replies back with relevant answers.
+
+
+User --> Requests --> API Server --> Pickle Model
+
+a) Create an API for the model, using Flask which is a Python micro framework for building web applications.
+b) This API will allow us to utilize the predictive capabilities through HTTP requests
+
+
+Creating the Webpage: 
+
+- This is the frontend part. Webpage will have a text box in which a user can type in the Description of Accident and click on "Predict" button to get the result i.e. Accident Severity
+
+
+Connecting the Webpage with the Model
+
+- Here we need to load the saved pickled model
+- Define a function 'results', to get the prediction result from the model
+- This module 
+
+Folder Structure:
+
+app.py
+requests.py
+templates/
+	index.html
